@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --bg-color: #1a1a2e;
+    --board-color: #000000;
+    --panel-color: #000000;
+    --accent-color: #e94560;
+    --text-light: #ffffff;
+    --text-dark: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1974&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-light);
+    font-family: 'Poppins', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-wrapper {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100%;
+}
+
+/* 보드 컨테이너 */
+.board-container {
+    position: relative;
+}
+
+#game-board {
+    background-color: var(--board-color);
+    border: 2px solid white;
+}
+
+/* 홀드 & 넥스트 패널 */
+.hold-panel, .next-panel {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panel-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    border: 2px solid white;
+}
+
+#hold-piece, 
+#next-piece-1, 
+#next-piece-2, 
+#next-piece-3, 
+#next-piece-4, 
+#next-piece-5 {
+    background-color: var(--panel-color);
+    border: 2px solid white;
+    width: 100%;
+    height: auto;
+}
+
+.next-pieces-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 게임 상태 */
+.game-stats {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+
+.stat {
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.smaller {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.time-ms {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+/* 버튼 & 컨트롤 */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 키 정보 */
+.key-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.key-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.key {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+.key-action {
+    font-size: 0.9rem;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 900px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hold-panel, .next-panel {
+        width: 80%;
+        max-width: 300px;
+        flex-direction: row;
+    }
+    
+    .hold-panel {
+        order: 1;
+    }
+    
+    .board-container {
+        order: 2;
+    }
+    
+    .next-panel {
+        order: 3;
+    }
+    
+    .next-pieces-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        width: 100%;
+    }
+    
+    #hold-piece, 
+    #next-piece-1, 
+    #next-piece-2, 
+    #next-piece-3, 
+    #next-piece-4, 
+    #next-piece-5 {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .game-stats {
+        position: static;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    
+    .stat {
+        margin-bottom: 0;
+    }
+}
